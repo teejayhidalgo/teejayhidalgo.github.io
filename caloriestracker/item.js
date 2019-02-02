@@ -16,7 +16,7 @@ class Items{
         this.list = this.list.filter(function(item,index){
             console.log(index, key);
             return index != key;
-        });
+        }); 
     }
 
     update(data){
