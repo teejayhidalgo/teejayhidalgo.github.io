@@ -15,7 +15,7 @@ class Ui {
     refreshList(items){
         let entries = '';
         let total = 0;
-        
+        console.log(items);
         items.forEach(function(item,key){
             total += parseInt(item.calories);
             entries += `<li class="collection-item" id="item-${key}">

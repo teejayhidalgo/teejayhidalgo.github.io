@@ -12,8 +12,11 @@ class Items{
         this.list.push(data);
     }
 
-    delete(){
-        delete this.list[this.itemId];
+    delete(key){
+        this.list = this.list.filter(function(item,index){
+            console.log(index, key);
+            return index != key;
+        });
     }
 
     update(data){

@@ -29,7 +29,9 @@ ui.backBtn.addEventListener('click', function(e){
 ui.clearBtn.addEventListener('click', clearAll);
 
 ui.deleteBtn.addEventListener('click', function(e){
-    items.delete();
+    items.delete(items.itemId);
+    console.log(items.list);
+    storage.refresh(items.list);
     ui.refreshList(items.list);
     deactivateEditItem();
     e.preventDefault();
