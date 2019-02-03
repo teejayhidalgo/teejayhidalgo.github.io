@@ -42,6 +42,7 @@ ui.updateBtn.addEventListener('click',function(e){
         return false;
     }
     items.update({name: ui.food.value, calories: ui.calories.value});
+    storage.refresh(items.list);
     ui.refreshList(items.list);
     e.preventDefault();
 });
