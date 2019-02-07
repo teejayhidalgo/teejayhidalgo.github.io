@@ -10,7 +10,7 @@ window.addEventListener('load', function(){
 ui.addBtn.addEventListener('click', addItem);
 
 ui.itemList.addEventListener('click', function(e){
-    if(e.target.className === 'fa fa-pencil'){
+    if(e.target.class === 'fa fa-pencil white-text'){
         ui.targetItemId = e.target.parentNode.parentNode.id;
         activateEditItem();
     }
@@ -30,7 +30,6 @@ ui.clearBtn.addEventListener('click', clearAll);
 
 ui.deleteBtn.addEventListener('click', function(e){
     items.delete(items.itemId);
-    console.log(items.list);
     storage.refresh(items.list);
     ui.refreshList(items.list);
     deactivateEditItem();

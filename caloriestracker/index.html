@@ -13,12 +13,15 @@
     <title>Track Calorie | Meal & Calorie Tracker</title>
 </head>
 
-<body>
+<body class="teal lighten-3">
 
     <nav>
-        <div class="nav-wrapper blue">
+        <div class="nav-wrapper light-blue lighten-1 accent-1">
             <div class="container">
-                <a href="#" class="brand-logo center">Track Calorie</a>
+                <ul class="left">
+                    <li><a href="#" class="brand-logo">Track Calories</a></li>
+                </ul>
+
                 <ul class="right">
                     <li><a href="#" class="clear-btn btn blue lighten-3">Clear All</a></li>
                 </ul>
@@ -26,11 +29,9 @@
         </div>
     </nav>
 
-    <br>
-
-    <div class="container">
+    <div class="container white-text">
         <!-- Form Card -->
-        <div class="card">
+        <div class="card blue darken-2 z-depth-2">
             <div class="card-content">
                 <span class="card-title">Add Meal / Food Item</span>
                 <form class="col">
@@ -38,12 +39,14 @@
                         <div class="input-field col s6">
                             <input type="text" id="item-name" placeholder="Add Item">
                             <label for="item-name">Meal</label>
-                            <span class="helper-text" data-error="Invalid Input" data-success="Valid Input">Letters Only</span>
+                            <span class="helper-text" data-error="Invalid Input" data-success="Valid Input">Letters
+                                Only</span>
                         </div>
                         <div class="input-field col s6">
                             <input type="text" id="item-calories" placeholder="Add Calories">
                             <label for="item-calories">Calories</label>
-                            <span class="helper-text" data-error="Invalid Input" data-success="Valid Input">Numbers Only</span>
+                            <span class="helper-text" data-error="Invalid Input" data-success="Valid Input">Numbers
+                                Only</span>
                         </div>
                         <button class="add-btn btn blue darken-3"><i class="fa fa-plus"></i>Add Meal</button>
 
@@ -54,11 +57,7 @@
                 </form>
             </div>
         </div>
-
-        <!-- Calorie Count -->
-        <h3 class="center-align">Total Calories: <span class="total-calories">0</span></h3>
-
-        <ul id="item-list" class="collection">
+        <ul id="item-list" class="collection z-depth-2">
             <!-- <li class="collection-item" id="item-0">
                 <strong>Eggs: </strong><em>300 Calories</em>
                 <a href="#" class="secondary-content">
@@ -66,6 +65,7 @@
                 </a>
             </li> -->
         </ul>
+        <h4 class="center-align">Total Calories: <span class="total-calories">0</span></h4>
     </div>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

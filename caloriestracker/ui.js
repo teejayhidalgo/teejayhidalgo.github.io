@@ -15,13 +15,15 @@ class Ui {
     refreshList(items){
         let entries = '';
         let total = 0;
+        let color = '';
         console.log(items);
         items.forEach(function(item,key){
             total += parseInt(item.calories);
-            entries += `<li class="collection-item" id="item-${key}">
+            color = key % 2 === 0 ? 'deep-purple accent-2' : 'deep-purple';
+            entries += `<li class="collection-item ${color}" id="item-${key}">
             <strong>${item.name}: </strong><em>${item.calories} Calories</em>
             <a href="#" class="secondary-content">
-                <i class="fa fa-pencil"></i>
+                <i class="fa fa-pencil white-text"></i>
             </a>
             </li>`;
         });
