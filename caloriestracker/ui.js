@@ -19,7 +19,7 @@ class Ui {
         console.log(items);
         items.forEach(function(item,key){
             total += parseInt(item.calories);
-            color = key % 2 === 0 ? 'deep-purple accent-2' : 'deep-purple';
+            color = key % 2 === 0 ? 'indigo lighten-3' : 'indigo lighten-1';
             entries += `<li class="collection-item ${color}" id="item-${key}">
             <strong>${item.name}: </strong><em>${item.calories} Calories</em>
             <a href="#" class="secondary-content">
