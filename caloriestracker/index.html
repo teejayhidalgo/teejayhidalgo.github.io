@@ -17,14 +17,10 @@
 
     <nav>
         <div class="nav-wrapper light-blue lighten-1 accent-1">
-            <div class="container">
-                <ul class="left">
-                    <li><a href="#" class="brand-logo">Track Calories</a></li>
-                </ul>
+            <div class="container col s12">
+                <a href="#" class="left col s6 brand-logo">Track Calories</a>
+                <a href="#" class="right col s6 clear-btn btn blue lighten-3">Clear All</a>
 
-                <ul class="right">
-                    <li><a href="#" class="clear-btn btn blue lighten-3">Clear All</a></li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -34,7 +30,7 @@
         <div class="card blue darken-2 z-depth-2">
             <div class="card-content">
                 <span class="card-title">Add Meal / Food Item</span>
-                <form class="col">
+                <form class="col s12">
                     <div class="row">
                         <div class="input-field col s6">
                             <input type="text" id="item-name" placeholder="Add Item">
@@ -50,9 +46,17 @@
                         </div>
                         <button class="add-btn btn blue darken-3"><i class="fa fa-plus"></i>Add Meal</button>
 
-                        <button class="update-btn btn orange hide"><i class="fa fa-pencil-square-o"></i>Update Meal</button>
-                        <button class="delete-btn btn red hide"><i class="fa fa-remove"></i>Delete Meal</button>
-                        <button class="back-btn btn grey pull-right hide"><i class="fa fa-chevron-circle-left"></i>Back</button>
+
+                    </div>
+                    <div class="row">
+                            <button class="update-btn btn orange hide s6"><i class="fa fa-pencil-square-o"></i>Update Meal</button>
+             
+                            <button class="delete-btn btn red hide s6"><i class="fa fa-remove"></i>Delete Meal</button>
+
+                    </div>
+                    <div class="row">
+                        <button class="back-btn btn grey pull-right hide"><i
+                                class="fa fa-chevron-circle-left"></i>Back</button>
                     </div>
                 </form>
             </div>
