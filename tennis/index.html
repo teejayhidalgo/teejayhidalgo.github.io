@@ -6,179 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tennis Game Built With JAVASCRIPT</title>
+
+    <link rel="stylesheet" type="text/css" href="responsive.css">
 </head>
 
 <body>
-    <canvas id="gameCanvas" width="800" height="600">
 
-    </canvas>
+    <div class="wrapper">
+        <div class="container">
+            <div class="canvas-container">
+                <canvas id="gameCanvas" width="1024" height="640"></canvas>
+            </div>
+        </div>
+    </div>
 </body>
-<script>
 
-    var canvas;
-    var canvasContext;
-    var fireBallX = 50;
-    var fireBallY = 50;
-    var speedX = 10;
-    var speedY = 4;
-    var paddle1Y = 250;
-    var paddle2Y = 250;
-    var player1Score = 0;
-    var player2Score = 0;
-    const WINNING_SCORE = 3;
-    const PADDLE_HEIGHT = 100;
-    const PADDLE_WIDTH = 10;
-    const LEFT_COLOR = "orange";
-    const RIGHT_COLOR = "blue";
-    var BALL_COLOR = 'white';
-    var winner = false;
-
-    window.onload = function () {
-
-        canvas = document.querySelector('#gameCanvas');
-        canvasContext = canvas.getContext('2d');
-        var framesPerSecond = 30;
-        setInterval(function () {
-            draw();
-            move();
-
-        }, 1000 / framesPerSecond);
-
-        canvas.addEventListener('mousemove', function (e) {
-            var mousePos = calculateMousePos(e);
-            paddle1Y = mousePos.y - (PADDLE_HEIGHT / 2);
-        });
-
-        canvas.addEventListener('mousedown', handleMouseClick);
-    }
-
-
-
-    function handleMouseClick(e) {
-        if (winner) {
-            player1Score = 0;
-            player2Score = 0;
-            winner = false;
-        }
-    }
-
-    function aiMovement() {
-        var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT / 2);
-        if (paddle2YCenter < fireBallY - 35) {
-            paddle2Y += 6;
-        } else if (paddle2YCenter > fireBallY + 35) {
-            paddle2Y -= 6;
-        }
-    }
-
-    function move() {
-        if (winner) {
-            return;
-        }
-        aiMovement();
-        fireBallX += speedX;
-        fireBallY += speedY;
-        if (fireBallX > (canvas.width)-PADDLE_WIDTH) {
-            if (fireBallY > paddle2Y && fireBallY < paddle2Y + PADDLE_HEIGHT) {
-                speedX = -speedX;
-                var deltaY = fireBallY - (paddle2Y + PADDLE_HEIGHT / 2);
-                speedY = deltaY * 0.35;
-            } else {
-                player1Score++;
-                ballReset();
-            }
-        }
-        if (fireBallX < PADDLE_WIDTH) {
-            if (fireBallY > paddle1Y && fireBallY < paddle1Y + PADDLE_HEIGHT) {
-                speedX = -speedX;
-                var deltaY = fireBallY - (paddle1Y + PADDLE_HEIGHT / 2);
-                speedY = deltaY * 0.35;
-            } else {
-                player2Score++;
-                ballReset();
-            }
-
-        }
-        if (fireBallY < 0) {
-            speedY = -speedY;
-        }
-        if (fireBallY > canvas.height) {
-            speedY = -speedY;
-        }
-    }
-
-    function drawNet() {
-        for (i = 0; i < canvas.height; i += 40) {
-            colorRect(canvas.width / 2 - 1, i, 2, 20, 'white');
-        }
-    }
-
-    function draw() {
-
-        //black screen
-        colorRect(0, 0, canvas.width, canvas.height, 'black');
-
-        if (winner) {
-            canvasContext.fillStyle = 'white';
-            if (player1Score >= WINNING_SCORE) {
-                canvasContext.fillText("Left Player WON!", 350, 200);
-            } else if (player2Score >= WINNING_SCORE) {
-                canvasContext.fillText("Right Player WON!", 350, 200);
-            }
-
-            canvasContext.fillText("Click to Play Again", 350, 500);
-        }
-
-        drawNet();
-        canvasContext.fillText(player1Score, 100, 50);
-        canvasContext.fillText(player2Score, canvas.width - 100, 50);
-        //draws paddle
-        colorRect(0, paddle1Y, PADDLE_WIDTH, PADDLE_HEIGHT, LEFT_COLOR);
-        //draw computer paddle
-        colorRect(canvas.width - PADDLE_WIDTH, paddle2Y, PADDLE_WIDTH, PADDLE_HEIGHT, RIGHT_COLOR);
-        //draws ball
-        if(speedX > 0){
-            if(player2Score < WINNING_SCORE-1) 
-            BALL_COLOR = LEFT_COLOR;
-        } else {
-            if(player1Score < WINNING_SCORE-1) 
-            BALL_COLOR = RIGHT_COLOR;
-        }
-        colorCircle(fireBallX, fireBallY, 10, BALL_COLOR);    
-    }
-
-    function colorRect(leftX, topY, width, height, drawColor) {
-        canvasContext.fillStyle = drawColor;
-        canvasContext.fillRect(leftX, topY, width, height);
-    }
-
-    function colorCircle(centerX, centerY, radius, drawColor) {
-        canvasContext.fillStyle = drawColor;
-        canvasContext.beginPath();
-        canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
-        canvasContext.fill();
-    }
-
-    function calculateMousePos(e) {
-        var rect = canvas.getBoundingClientRect();
-        var root = document.documentElement;
-        var mouseX = e.clientX - rect.left - root.scrollLeft;
-        var mouseY = e.clientY - rect.top - root.scrollTop;
-        return {
-            x: mouseX,
-            y: mouseY
-        };
-    }
-
-    function ballReset() {
-        if (player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE) {
-            winner = true;
-        }
-        speedX = -speedX;
-        fireBallX = canvas.width / 2;
-        fireBallY = canvas.height / 2;
-    }
-
-</script>
+<script src="app.js"></script>
 
 </html>
